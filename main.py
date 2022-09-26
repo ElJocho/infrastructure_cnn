@@ -23,14 +23,14 @@ def main(mode: str) -> None:
         import preprocessing
         logger.info("Working Mode: Preprocess the data")
         preprocessing.preprocessing_data()
-    elif mode == "segnet":
-        import segnet
+    elif mode == "unet":
+        import unet
 
         logger.info("Working Mode: Train the model and predict")
-        segnet.segnet_execution()
+        unet.unet_execution()
     elif mode == "Complete":
         import preprocessing
-        import segnet
+        import unet
 
         logger.info(
             "Working Mode: Complete run, including preprocessing training and predicting"
@@ -39,13 +39,13 @@ def main(mode: str) -> None:
         logger.info("Doing the preprocessing")
         preprocessing.preprocessing_data()
         logger.info("Training the model and predict the raster")
-        segnet.segnet_execution()
+        unet.unet_execution()
 
     elif mode == "Predict":
-        import segnet
-        segnet.predict_raster()
+        import unet
+        unet.predict_raster()
     else:
-        raise ValueError("Working mode must be Complete, segnet or Preprocessing.")
+        raise ValueError("Working mode must be Complete, unet or Preprocessing.")
 
 if __name__ == "__main__":
     working_mode = "Complete"

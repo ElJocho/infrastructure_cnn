@@ -140,8 +140,8 @@ def determine_argmax(mode):
     return mask_total, pred_total
 
 
-def segnet_evaluate(mode) -> None:
-    """This function evaluates the training of the segnet on test or validation data"""
+def unet_evaluate(mode) -> None:
+    """This function evaluates the training of the unet on test or validation data"""
     # get prediction results
 
     mask_total, pred_total = determine_class_threshold(mode)
@@ -183,8 +183,8 @@ def segnet_evaluate(mode) -> None:
 
 
 
-def segnet_evaluate_dual(mode) -> None:
-    """This function evaluates the training of the segnet on test or validation data"""
+def unet_evaluate_dual(mode) -> None:
+    """This function evaluates the training of the unet on test or validation data"""
     # get prediction results
 
     mask_total, pred_total = determine_argmax(mode)
@@ -337,7 +337,7 @@ def predict_raster() -> None:
     logger.setLevel(logging.INFO)
 
 
-def segnet_fit() -> None:
+def unet_fit() -> None:
     """This function trains the model"""
     # Setting up generator
     train_gen, test_gen, no_of_trainsets, no_of_testsets = get_generator(
@@ -385,17 +385,17 @@ def segnet_fit() -> None:
     plot_fit_progress(history)
 
 
-def segnet_execution() -> None:
+def unet_execution() -> None:
     """ This function executes all other function in correct order"""
-    segnet_fit()
+    unet_fit()
     if DUAL_SHAPES:
-        segnet_evaluate_dual(mode="test")
-        segnet_evaluate_dual(mode="valid")
+        unet_evaluate_dual(mode="test")
+        unet_evaluate_dual(mode="valid")
     else:
-        segnet_evaluate(mode="test")
-        segnet_evaluate(mode="valid")
+        unet_evaluate(mode="test")
+        unet_evaluate(mode="valid")
     predict_raster()
 
 
 if __name__ == "__main__":
-    segnet_execution()
+    unet_execution()

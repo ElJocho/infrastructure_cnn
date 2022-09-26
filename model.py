@@ -1,5 +1,5 @@
 """
-This Script defines the Image generators and builds the model used by segnet.py
+This Script defines the Image generators and builds the model used by unet.py
 """
 import os
 

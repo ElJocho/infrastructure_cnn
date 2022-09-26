@@ -15,7 +15,7 @@ from main import DUAL_SHAPES
 
 ## generator
 def get_generator(batch_size, target_size, mode):
-    # this function generates the different image data generators
+    """this function generates the different image data generators"""
     seed = 42
     gen_train_img = ImageDataGenerator(
         # rescales and augments data
@@ -110,6 +110,7 @@ def decoder_block(input, skip_features, num_filters, no_of_conv_blocks):
 
 
 def build_model(target_size):
+    """Build the unet."""
     inputs = layers.Input(shape=target_size + [3])
 
     # get pretrained model

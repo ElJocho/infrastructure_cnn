@@ -108,7 +108,9 @@ def determine_class_threshold(mode) -> tuple:
 
     return mask_total, pred_total
 
+
 def determine_argmax(mode):
+    """Determine argmax for multi-class predictions."""
     model = build_model(target_size=TARGET_SIZE)
     model.load_weights(os.path.join(RESULT_PATH, "weights.h5"))
 
